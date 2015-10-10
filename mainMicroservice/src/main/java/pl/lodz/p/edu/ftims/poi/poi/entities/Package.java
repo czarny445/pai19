@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Version;
+import org.springframework.data.annotation.Version;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Package {
         this.ID = ID;
         this.history = history;
     }
-    
+
     public Long getID() {
         return ID;
     }
@@ -50,8 +50,9 @@ public class Package {
     public void setHistory(List<History> history) {
         this.history = history;
     }
+
     public Integer getVersion() {
         return Version;
     }
-    
+
 }
