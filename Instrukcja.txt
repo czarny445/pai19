@@ -1,0 +1,4 @@
+Instalujemy: 
+- Netbeans 8.0.2
+- Java 1.8
+- MongoDB w wersji najnowszej
