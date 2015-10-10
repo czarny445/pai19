@@ -6,6 +6,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.query.Param;
 import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 
 /**
@@ -14,6 +15,11 @@ import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
  */
 public interface DepartmentRepository extends MongoRepository<Department, Long> {
 
-    public Department findByName(String Name);
+    /**
+     *
+     * @param Name
+     * @return
+     */
+    public Department findByName(@Param("name") String Name);
 
 }

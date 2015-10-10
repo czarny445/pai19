@@ -5,10 +5,9 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
 
@@ -18,6 +17,7 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
  */
 @SpringBootApplication
 @EnableMongoRepositories(basePackages = "pl.lodz.p.edu.ftims.poi.poi.repository")
+@ComponentScan("pl.lodz.p.edu.ftims.poi.poi")
 public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
     
     @Autowired
