@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Version;
 
 /**
  *
@@ -22,4 +23,36 @@ public class History {
 
     @DBRef
     private List<Department> departments;
+    
+    @Version
+    private Integer Version;
+
+    public History() {
+    }    
+    
+    public History(Long ID, List<Department> departments) {
+        this.ID = ID;
+        this.departments = departments;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
+    }
+
+    public List<Department> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
+    }
+
+    public Integer getVersion() {
+        return Version;
+    }
+    
 }
