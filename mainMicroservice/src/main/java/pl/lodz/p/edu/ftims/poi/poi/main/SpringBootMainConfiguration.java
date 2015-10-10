@@ -1,14 +1,14 @@
 package pl.lodz.p.edu.ftims.poi.poi.main;
 
 import com.mongodb.Mongo;
+import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
 
@@ -16,22 +16,25 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
  *
  * @author lwieczor
  */
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
+@SpringBootApplication
 @EnableMongoRepositories(basePackages = "pl.lodz.p.edu.ftims.poi.poi.repository")
-public class SpringBootMainConfiguration extends AbstractMongoConfiguration implements CommandLineRunner {
+public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
     
     @Autowired
     private DepartmentRepository dr;
     
     public static void main(String[] args) {
         SpringApplication.run(SpringBootMainConfiguration.class, args);
-        
     }
     
-    @Override
-    public void run(String... args) throws Exception {
+//    @RequestMapping("/")
+//    @ResponseBody
+//    String home() {
+//        return "Hello World!";
+//    }
+//    
+    @PostConstruct
+    public void run() throws Exception {
         
         System.out.println("----- Aplikacja uruchomiona -----");
         System.out.println("----- Czyszczenie bazy -----");
@@ -49,6 +52,8 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration impl
         for (Department dprm : dr.findAll()) {
             System.out.println(dprm.toString());
         }
+        
+//        while(true);
         
     }
     
