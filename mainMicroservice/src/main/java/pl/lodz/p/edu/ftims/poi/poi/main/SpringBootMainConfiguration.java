@@ -42,10 +42,10 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration impl
         dr.save(new Department(1L, "Pierwszy", "Testowy adres"));
         dr.save(new Department(2L, "Drugi", "Testowy adres"));
         dr.save(new Department(3L, "Trzeci", "Testowy adres"));
-        Department findByName = dr.findByName("Pierwszy");
-        findByName.setAddress("Nowy adres");
-        dr.save(findByName);
-        
+//        Department findByName = dr.findByName("Pierwszy");
+//        findByName.setAddress("Nowy adres");
+//        dr.save(findByName);
+//        
         for (Department dprm : dr.findAll()) {
             System.out.println(dprm.toString());
         }
