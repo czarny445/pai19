@@ -6,12 +6,12 @@
 package pl.lodz.p.edu.ftims.poi.poi.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import pl.lodz.p.edu.ftims.poi.poi.entities.History;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Historia;
 
 /**
  *
  * @author lwieczor
  */
-public interface HistoryRepository extends MongoRepository<History, Long> {
+public interface HistoryRepository extends MongoRepository<Historia, Long> {
     
 }

@@ -16,21 +16,18 @@ import org.springframework.data.annotation.Version;
  * @author lwieczor
  */
 @Document
-public class Package {
+public class Paczka {
 
     @Id
     private Long ID;
 
     @DBRef
-    private List<History> history;
+    private List<Historia> history;
 
-    @Version
-    private Integer Version;
-
-    public Package() {
+    public Paczka() {
     }
 
-    public Package(Long ID, List<History> history) {
+    public Paczka(Long ID, List<Historia> history) {
         this.ID = ID;
         this.history = history;
     }
@@ -43,16 +40,12 @@ public class Package {
         this.ID = ID;
     }
 
-    public List<History> getHistory() {
+    public List<Historia> getHistory() {
         return history;
     }
 
-    public void setHistory(List<History> history) {
+    public void setHistory(List<Historia> history) {
         this.history = history;
-    }
-
-    public Integer getVersion() {
-        return Version;
     }
 
 }

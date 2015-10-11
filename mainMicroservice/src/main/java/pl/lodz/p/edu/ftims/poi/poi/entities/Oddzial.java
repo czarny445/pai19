@@ -14,7 +14,7 @@ import org.springframework.data.annotation.Version;
  * @author lwieczor
  */
 @Document
-public class Department {
+public class Oddzial {
 
     @Id
     private Long ID;
@@ -26,10 +26,10 @@ public class Department {
     @Version
     private Integer Version;
 
-    public Department() {
+    public Oddzial() {
     }
     
-    public Department(Long ID, String name, String address) {
+    public Oddzial(Long ID, String name, String address) {
         this.ID = ID;
         this.name = name;
         this.address = address;
