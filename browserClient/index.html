@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="clientBrowser">
+	<script type="text/javascript" src="app/js/angular.min.js"></script>
+	<script type="text/javascript" src="app/js/angular-route.min.js"></script>
+	<script type="text/javascript" src="app/js/angular-resource.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+	<script type="text/javascript" src="app/app.route.js"></script>
+		<script type="text/javascript" src="app/components/newPackage/newPackageController.js"></script>
+	<head>
+		<meta charset="UTF-8">
+		<title>PAI Browser Client</title>
+	</head>
+	<body>
+		<div class="container-fluid" ng-controller="MainController as main">
+			<div class="container">
+			 <button>
+			 	<a href="#/newPackage"> Nowa paka</a>
+			 </button>
+			 <button>
+			 	<a href="#/packagesList"> Lista paczek</a>
+			 </button>
+			</div>
+			<div ng-view></div>
+		</div>
+		
+	</body>
+</html>
