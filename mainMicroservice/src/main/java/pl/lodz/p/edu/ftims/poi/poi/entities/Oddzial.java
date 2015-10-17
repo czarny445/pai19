@@ -5,6 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
+import java.math.BigInteger;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Version;
@@ -17,7 +18,7 @@ import org.springframework.data.annotation.Version;
 public class Oddzial {
 
     @Id
-    private Long ID;
+    private BigInteger ID;
 
     private String name;
 
@@ -29,17 +30,17 @@ public class Oddzial {
     public Oddzial() {
     }
     
-    public Oddzial(Long ID, String name, String address) {
+    public Oddzial(BigInteger ID, String name, String address) {
         this.ID = ID;
         this.name = name;
         this.address = address;
     }
     
-    public Long getID() {
+    public BigInteger getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(BigInteger ID) {
         this.ID = ID;
     }
 

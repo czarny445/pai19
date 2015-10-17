@@ -5,6 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -19,7 +20,7 @@ import org.springframework.data.annotation.Version;
 public class Paczka {
 
     @Id
-    private Long ID;
+    private BigInteger ID;
 
     @DBRef
     private List<Historia> history;
@@ -27,16 +28,16 @@ public class Paczka {
     public Paczka() {
     }
 
-    public Paczka(Long ID, List<Historia> history) {
+    public Paczka(BigInteger ID, List<Historia> history) {
         this.ID = ID;
         this.history = history;
     }
 
-    public Long getID() {
+    public BigInteger getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(BigInteger ID) {
         this.ID = ID;
     }
 

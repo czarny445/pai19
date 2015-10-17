@@ -1,6 +1,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.main;
 
 import com.mongodb.Mongo;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,13 +52,15 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         System.out.println("----- Czyszczenie bazy -----");
 
         dr.deleteAll();
+        pr.deleteAll();
+        hr.deleteAll();
         System.out.println("----- Wypełnianie danymi    -----");
-        Oddzial oddzial = new Oddzial(1L, "Pierwszy", "Testowy adres");
-        Oddzial oddzial2 = new Oddzial(2L, "Drugi", "Testowy adres");
+        Oddzial oddzial = new Oddzial(BigInteger.valueOf(1L), "Pierwszy", "Testowy adres");
+        Oddzial oddzial2 = new Oddzial(BigInteger.valueOf(2L), "Drugi", "Testowy adres");
 
         dr.save(oddzial);
         dr.save(oddzial2);
-        dr.save(new Oddzial(3L, "Trzeci", "Testowy adres"));
+        dr.save(new Oddzial(BigInteger.valueOf(3L), "Trzeci", "Testowy adres"));
 //        Department findByName = dr.findByName("Pierwszy");
 //        findByName.setAddress("Nowy adres");
 //        dr.save(findByName);
@@ -65,11 +68,11 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         Historia historia = new Historia();
         Historia historia2 = new Historia();
         Paczka p = new Paczka();
-        p.setID(1L);
-        historia.setID(1L);
+        p.setID(BigInteger.valueOf(1L));
+        historia.setID(BigInteger.valueOf(1L));
         historia.setPack(p);
         historia.setOddzial(oddzial);
-        historia2.setID(2L);
+        historia2.setID(BigInteger.valueOf(2L));
         historia2.setPack(p);
         historia2.setOddzial(oddzial2);
         ArrayList<Historia> arrayList = new ArrayList<>();

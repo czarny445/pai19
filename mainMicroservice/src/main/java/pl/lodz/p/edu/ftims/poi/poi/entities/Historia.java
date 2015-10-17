@@ -5,11 +5,12 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.util.List;
+import java.math.BigInteger;
+import java.time.ZonedDateTime;
+import javax.persistence.GeneratedValue;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.annotation.Version;
 
 /**
  *
@@ -19,22 +20,25 @@ import org.springframework.data.annotation.Version;
 public class Historia {
 
     @Id
-    private Long ID;
+    @GeneratedValue
+    private BigInteger ID;
 
     @DBRef
     private Oddzial oddzial;
-    
+
     @DBRef
     private Paczka pack;
 
-    public Historia() {
-    }    
+    private ZonedDateTime date;
 
-    public Long getID() {
+    public Historia() {
+    }
+
+    public BigInteger getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(BigInteger ID) {
         this.ID = ID;
     }
 
@@ -53,6 +57,13 @@ public class Historia {
     public void setPack(Paczka pack) {
         this.pack = pack;
     }
-    
-    
+
+    public ZonedDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(ZonedDateTime date) {
+        this.date = date;
+    }
+
 }
