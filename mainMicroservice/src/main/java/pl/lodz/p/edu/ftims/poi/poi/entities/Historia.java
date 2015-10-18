@@ -6,7 +6,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
 import java.math.BigInteger;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import javax.persistence.GeneratedValue;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -29,7 +29,7 @@ public class Historia {
     @DBRef
     private Paczka pack;
 
-    private ZonedDateTime date;
+    private LocalDateTime date;
 
     public Historia() {
     }
@@ -58,11 +58,11 @@ public class Historia {
         this.pack = pack;
     }
 
-    public ZonedDateTime getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(ZonedDateTime date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
