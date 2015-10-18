@@ -3,31 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.lodz.p.edu.ftims.poi.poi.entities;
+package pl.lodz.p.edu.ftims.poi.poi.dao;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
  * @author lwieczor
  */
-@Document
-public class Historia {
+public class HistoryDao {
 
-    @Id
     private BigInteger pack;
 
     private LocalDateTime date;
 
-    /**
-     * Doręczony do centrali - true Nie doręczony - false
-     */
-    private Boolean reportStatus;
-
-    public Historia() {
+    public HistoryDao() {
     }
 
     public BigInteger getPack() {
@@ -36,14 +27,6 @@ public class Historia {
 
     public void setPack(BigInteger pack) {
         this.pack = pack;
-    }
-
-    public Boolean getReportStatus() {
-        return reportStatus;
-    }
-
-    public void setReportStatus(Boolean reportStatus) {
-        this.reportStatus = reportStatus;
     }
 
     public LocalDateTime getDate() {
