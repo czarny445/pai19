@@ -5,47 +5,46 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.math.BigInteger;
 import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.annotation.Version;
 
 /**
  *
  * @author lwieczor
  */
 @Document
-public class Paczka {
+public class Package {
 
     @Id
-    private BigInteger ID;
+    private Long ID;
 
     @DBRef
-    private List<Historia> history;
+    private List<History> history;
 
-    public Paczka() {
+    public Package() {
     }
 
-    public Paczka(BigInteger ID, List<Historia> history) {
+    public Package(Long ID, List<History> history) {
         this.ID = ID;
         this.history = history;
     }
 
-    public BigInteger getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(BigInteger ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
-    public List<Historia> getHistory() {
+    public List<History> getHistory() {
         return history;
     }
 
-    public void setHistory(List<Historia> history) {
+    public void setHistory(List<History> history) {
         this.history = history;
     }
 

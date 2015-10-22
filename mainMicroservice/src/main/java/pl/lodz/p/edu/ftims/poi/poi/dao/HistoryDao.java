@@ -5,7 +5,6 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.dao;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 /**
@@ -14,18 +13,18 @@ import java.time.LocalDateTime;
  */
 public class HistoryDao {
 
-    private BigInteger pack;
+    private Long pack;
 
     private LocalDateTime date;
 
     public HistoryDao() {
     }
 
-    public BigInteger getPack() {
+    public Long getPack() {
         return pack;
     }
 
-    public void setPack(BigInteger pack) {
+    public void setPack(Long pack) {
         this.pack = pack;
     }
 

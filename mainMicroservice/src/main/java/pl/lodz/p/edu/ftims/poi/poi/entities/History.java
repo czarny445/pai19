@@ -5,9 +5,10 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
+
 import javax.persistence.GeneratedValue;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,44 +18,44 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author lwieczor
  */
 @Document
-public class Historia {
+public class History {
 
     @Id
     @GeneratedValue
-    private BigInteger ID;
+    private Long ID;
 
     @DBRef
-    private Oddzial oddzial;
+    private Department oddzial;
 
     @DBRef
-    private Paczka pack;
+    private Package pack;
 
     private LocalDateTime date;
 
-    public Historia() {
+    public History() {
     }
 
-    public BigInteger getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(BigInteger ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
-    public Oddzial getOddzial() {
+    public Department getOddzial() {
         return oddzial;
     }
 
-    public void setOddzial(Oddzial oddzial) {
+    public void setOddzial(Department oddzial) {
         this.oddzial = oddzial;
     }
 
-    public Paczka getPack() {
+    public Package getPack() {
         return pack;
     }
 
-    public void setPack(Paczka pack) {
+    public void setPack(Package pack) {
         this.pack = pack;
     }
 

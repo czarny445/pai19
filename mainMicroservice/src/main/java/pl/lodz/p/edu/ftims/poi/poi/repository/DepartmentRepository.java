@@ -5,22 +5,22 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.repository;
 
-import java.math.BigInteger;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Oddzial;
+
+import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 
 /**
  * http://docs.spring.io/spring-data/rest/docs/current/reference/html/
  * @author lwieczor
  */
-public interface DepartmentRepository extends MongoRepository<Oddzial, BigInteger> {
+public interface DepartmentRepository extends MongoRepository<Department, Long> {
 
     /**
      *
      * @param Name
      * @return
      */
-    public Oddzial findByName(@Param("name") String Name);
+    public Department findByName(@Param("name") String Name);
 
 }

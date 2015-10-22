@@ -5,14 +5,14 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.repository;
 
-import java.math.BigInteger;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Historia;
+
+import pl.lodz.p.edu.ftims.poi.poi.entities.History;
 
 /**
  * http://docs.spring.io/spring-data/rest/docs/current/reference/html/
  * @author lwieczor
  */
-public interface HistoryRepository extends MongoRepository<Historia, BigInteger> {
+public interface HistoryRepository extends MongoRepository<History, Long> {
     
 }

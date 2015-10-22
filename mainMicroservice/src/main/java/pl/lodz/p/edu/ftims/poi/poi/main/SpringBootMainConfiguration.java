@@ -10,9 +10,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Oddzial;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Historia;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Paczka;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
+import pl.lodz.p.edu.ftims.poi.poi.entities.History;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Package;
 import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
 import pl.lodz.p.edu.ftims.poi.poi.repository.HistoryRepository;
 import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
@@ -55,27 +55,27 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         pr.deleteAll();
         hr.deleteAll();
         System.out.println("----- Wypełnianie danymi    -----");
-        Oddzial oddzial = new Oddzial(BigInteger.valueOf(1L), "Pierwszy", "Testowy adres");
-        Oddzial oddzial2 = new Oddzial(BigInteger.valueOf(2L), "Drugi", "Testowy adres");
+        Department oddzial = new Department(1L, "Pierwszy", "Testowy adres");
+        Department oddzial2 = new Department(2L, "Drugi", "Testowy adres");
 
         dr.save(oddzial);
         dr.save(oddzial2);
-        dr.save(new Oddzial(BigInteger.valueOf(3L), "Trzeci", "Testowy adres"));
+        dr.save(new Department(3L, "Trzeci", "Testowy adres"));
 //        Department findByName = dr.findByName("Pierwszy");
 //        findByName.setAddress("Nowy adres");
 //        dr.save(findByName);
 //
-        Historia historia = new Historia();
-        Historia historia2 = new Historia();
-        Paczka p = new Paczka();
-        p.setID(BigInteger.valueOf(1L));
-        historia.setID(BigInteger.valueOf(1L));
+        History historia = new History();
+        History historia2 = new History();
+        Package p = new Package();
+        p.setID(1L);
+        historia.setID(1L);
         historia.setPack(p);
         historia.setOddzial(oddzial);
-        historia2.setID(BigInteger.valueOf(2L));
+        historia2.setID(2L);
         historia2.setPack(p);
         historia2.setOddzial(oddzial2);
-        ArrayList<Historia> arrayList = new ArrayList<>();
+        ArrayList<History> arrayList = new ArrayList<>();
         arrayList.add(historia);
         arrayList.add(historia2);
         p.setHistory(arrayList);
@@ -84,7 +84,7 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         hr.save(historia);
         hr.save(historia2);
 
-        for (Oddzial dprm : dr.findAll()) {
+        for (Department dprm : dr.findAll()) {
             System.out.println(dprm.toString());
         }
 
