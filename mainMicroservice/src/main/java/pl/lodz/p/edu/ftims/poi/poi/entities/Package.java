@@ -20,6 +20,8 @@ public class Package {
 
     @Id
     private Long ID;
+    
+    private String name; 
 
     @DBRef
     private List<History> history;
@@ -27,9 +29,10 @@ public class Package {
     public Package() {
     }
 
-    public Package(Long ID, List<History> history) {
+    public Package(Long ID, List<History> history, String name) {
         this.ID = ID;
         this.history = history;
+        this.name = name;
     }
 
     public Long getID() {
@@ -47,5 +50,15 @@ public class Package {
     public void setHistory(List<History> history) {
         this.history = history;
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+    
+    
 
 }

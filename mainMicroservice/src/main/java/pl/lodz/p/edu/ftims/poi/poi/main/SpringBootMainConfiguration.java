@@ -65,28 +65,43 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 //        findByName.setAddress("Nowy adres");
 //        dr.save(findByName);
 //
-        History historia = new History();
-        History historia2 = new History();
-        Package p = new Package();
-        p.setID(1L);
-        historia.setID(1L);
-        historia.setPack(p);
-        historia.setOddzial(oddzial);
-        historia2.setID(2L);
-        historia2.setPack(p);
-        historia2.setOddzial(oddzial2);
-        ArrayList<History> arrayList = new ArrayList<>();
-        arrayList.add(historia);
-        arrayList.add(historia2);
-        p.setHistory(arrayList);
-
-        pr.save(p);
-        hr.save(historia);
-        hr.save(historia2);
-
-        for (Department dprm : dr.findAll()) {
-            System.out.println(dprm.toString());
-        }
+         for(int i = 0; i<10;i++){
+        	 Package p = new Package(Long.valueOf(i), null, "Paczka " + i);
+        	 pr.save(p);
+         }
+//        History historia = new History();
+//        History historia2 = new History();
+//        Package p = new Package();
+//        Package p1 = new Package();
+//        Package p2 = new Package();
+//        Package p3 = new Package();
+//        
+//        p.setID(1L);
+//        p1.setID(2L);
+//        p2.setID(3L);
+//        p3.setID(4L);
+//        
+//        historia.setID(1L);
+//        historia.setPack(p);
+//        historia.setOddzial(oddzial);
+//        historia2.setID(2L);
+//        historia2.setPack(p);
+//        historia2.setOddzial(oddzial2);
+//        ArrayList<History> arrayList = new ArrayList<>();
+//        arrayList.add(historia);
+//        arrayList.add(historia2);
+//        p.setHistory(arrayList);
+//
+//        pr.save(p);
+//        pr.save(p1);
+//        pr.save(p2);
+//        pr.save(p3);
+//        hr.save(historia);
+//        hr.save(historia2);
+//
+//        for (Department dprm : dr.findAll()) {
+//            System.out.println(dprm.toString());
+//        }
 
 //        while(true);
     }

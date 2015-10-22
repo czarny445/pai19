@@ -1,0 +1,13 @@
+<div ng-init="clicked = false" ng-show="true" class="container">
+	<h1> Nowa paczka</h1>
+	<form class="form-horizontal" name="newPackageForm" novalidate>	
+		<div class="form-grupe">
+			<label>Nazwa:</label>
+			<input class="form-control" type="text" ng-model="newPackageController.newPackage.name"/>
+		</div>
+		</br>
+		<div class="form-grupe">
+			<button class="btn"  ng-click="newPackageController.create()" class="button">Dodaj</button>
+		</div>
+	</form>
+</div>
