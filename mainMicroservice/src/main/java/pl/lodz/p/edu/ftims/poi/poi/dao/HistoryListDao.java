@@ -33,6 +33,11 @@ public class HistoryListDao {
     public void setDepartement(Long departement) {
         this.departement = departement;
     }
+
+    @Override
+    public String toString() {
+        return "HistoryListDao{" + "history=" + history + ", departement=" + departement + '}';
+    }
     
     
 

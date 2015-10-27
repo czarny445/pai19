@@ -52,4 +52,9 @@ public class History {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "History{" + "pack=" + pack + ", date=" + date + ", reportStatus=" + reportStatus + '}';
+    }
+
 }

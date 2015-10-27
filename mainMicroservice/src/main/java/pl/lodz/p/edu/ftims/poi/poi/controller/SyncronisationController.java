@@ -5,19 +5,25 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.controller;
 
+import com.google.gson.Gson;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryDao;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryListDao;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 import pl.lodz.p.edu.ftims.poi.poi.entities.History;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Package;
 import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
 import pl.lodz.p.edu.ftims.poi.poi.repository.HistoryRepository;
 import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
@@ -30,6 +36,8 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
 @RequestMapping("/sync")
 public class SyncronisationController {
 
+    private static final Logger logger = Logger.getLogger(SyncronisationController.class.getName());
+    
     @Autowired
     HistoryRepository hr;
 
@@ -41,16 +49,28 @@ public class SyncronisationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
-    String checkpoint(HistoryListDao h) {
-
+    String checkpoint(@RequestBody String input) {
+        logger.log(Level.INFO, "Sync:{0}", input);
+        Gson gson = new Gson();
+        
+        HistoryListDao h = gson.fromJson(input, HistoryListDao.class);
+        logger.log(Level.INFO, "Sync:{0} h:", h);
+        
         for (HistoryDao history : h.getHistory()) {
+            Random r = new Random();//Do ukoszernienia
+            Department dep = dr.findOne(h.getDepartement());
+            Package pack = pr.findOne(history.getPack());
             History historia = new History();
-            historia.setPack(pr.findOne(history.getPack()));
-            historia.setOddzial(dr.findOne(h.getDepartement()));
+            historia.setID(r.nextLong());//Do ukoszernienia
+            historia.setPack(pack);
+            historia.setOddzial(dep);
             historia.setDate(history.getDate());
+            History save = hr.save(historia);
+            pack.getHistory().add(save);
+            pr.save(pack);
         }
 
-        return "{\"succes\" :\"true\"}";
+        return "OK";
     }
 
     @RequestMapping(method = RequestMethod.GET)

@@ -36,4 +36,9 @@ public class HistoryDao {
         this.date = date;
     }
 
+    @Override
+    public String toString() {
+        return "HistoryDao{" + "pack=" + pack + ", date=" + date + '}';
+    }
+
 }
