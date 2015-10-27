@@ -15,7 +15,7 @@ import java.util.List;
 public class HistoryListDao {
 
     List<HistoryDao> history = new ArrayList<>();
-    
+
     Long departement;
 
     public List<HistoryDao> getHistory() {
@@ -33,7 +33,10 @@ public class HistoryListDao {
     public void setDepartement(Long departement) {
         this.departement = departement;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "HistoryListDao{" + "history=" + history + ", departement=" + departement + '}';
+    }
 
 }

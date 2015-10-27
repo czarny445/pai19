@@ -6,6 +6,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.dao;
 
 import java.util.Date;
+import pl.lodz.p.edu.ftims.poi.poi.entities.History;
 
 /**
  *
@@ -34,6 +35,16 @@ public class HistoryDao {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public HistoryDao(History h) {
+        this.pack = h.getPack();
+        this.date = h.getDate();
+    }
+
+    @Override
+    public String toString() {
+        return "HistoryDao{" + "pack=" + pack + ", date=" + date + '}';
     }
 
 }
