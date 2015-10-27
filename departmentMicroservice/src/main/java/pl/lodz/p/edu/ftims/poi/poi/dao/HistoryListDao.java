@@ -5,7 +5,6 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.dao;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class HistoryListDao {
 
     List<HistoryDao> history = new ArrayList<>();
     
-    BigInteger departement = new BigInteger("2"); //TODO
+    Long departement;
 
     public List<HistoryDao> getHistory() {
         return history;
@@ -27,11 +26,11 @@ public class HistoryListDao {
         this.history = history;
     }
 
-    public BigInteger getDepartement() {
+    public Long getDepartement() {
         return departement;
     }
 
-    public void setDepartement(BigInteger departement) {
+    public void setDepartement(Long departement) {
         this.departement = departement;
     }
     

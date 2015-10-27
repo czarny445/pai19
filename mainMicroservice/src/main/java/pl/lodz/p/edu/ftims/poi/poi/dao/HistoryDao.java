@@ -5,7 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.dao;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
@@ -15,7 +15,7 @@ public class HistoryDao {
 
     private Long pack;
 
-    private LocalDateTime date;
+    private Date date;
 
     public HistoryDao() {
     }
@@ -28,11 +28,11 @@ public class HistoryDao {
         this.pack = pack;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

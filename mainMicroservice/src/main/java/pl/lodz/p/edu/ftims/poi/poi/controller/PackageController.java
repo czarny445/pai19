@@ -14,7 +14,7 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
 
 @Controller
 @RequestMapping("/package")
-public class PckageController {
+public class PackageController {
 	
 	@Autowired
 	private PackageRepository pr;

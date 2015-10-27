@@ -5,15 +5,16 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.repository;
 
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.rest.core.annotation.RestResource;
-import pl.lodz.p.edu.ftims.poi.poi.entities.Historia;
+import pl.lodz.p.edu.ftims.poi.poi.entities.History;
 
 /**
  *
  * @author lwieczor
  */
-public interface HistoryRepository extends MongoRepository<Historia, Long> {
+public interface HistoryRepository extends MongoRepository<History, Long> {
 
     @Override
     @RestResource(exported = false)
@@ -21,6 +22,8 @@ public interface HistoryRepository extends MongoRepository<Historia, Long> {
 
     @Override
     @RestResource(exported = false)
-    void delete(Historia entity);
+    void delete(History entity);
+    
+    public List<History> findByReportStatus(Boolean reportStatus);
 
 }

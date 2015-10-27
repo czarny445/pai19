@@ -5,7 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.GeneratedValue;
 
@@ -30,7 +30,7 @@ public class History {
     @DBRef
     private Package pack;
 
-    private LocalDateTime date;
+    private Date date;
 
     public History() {
     }
@@ -59,11 +59,11 @@ public class History {
         this.pack = pack;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

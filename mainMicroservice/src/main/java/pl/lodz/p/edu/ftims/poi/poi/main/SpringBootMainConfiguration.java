@@ -66,7 +66,7 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 //        dr.save(findByName);
 //
          for(int i = 0; i<10;i++){
-        	 Package p = new Package(Long.valueOf(i), null, "Paczka " + i);
+        	 Package p = new Package(Long.valueOf(i), new ArrayList<>(), "Paczka " + i);
         	 pr.save(p);
          }
 //        History historia = new History();

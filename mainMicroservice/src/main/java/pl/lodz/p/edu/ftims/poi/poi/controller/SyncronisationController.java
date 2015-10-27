@@ -5,7 +5,9 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.controller;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -58,8 +60,8 @@ public class SyncronisationController {
         HistoryDao dao = new HistoryDao();
         HistoryDao dao2 = new HistoryDao();
 
-        dao.setDate(LocalDateTime.MIN);
-        dao2.setDate(LocalDateTime.now());
+        dao.setDate(Date.from(Instant.EPOCH));
+        dao2.setDate(Date.from(Instant.now()));
 
         dao.setPack(1L);
         dao2.setPack(2L);

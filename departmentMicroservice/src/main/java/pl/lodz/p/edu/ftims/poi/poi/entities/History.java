@@ -5,8 +5,8 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,26 +15,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author lwieczor
  */
 @Document
-public class Historia {
+public class History {
 
     @Id
-    private BigInteger pack;
+    private Long pack;
 
-    private LocalDateTime date;
+    private Date date;
 
-    /**
-     * Doręczony do centrali - true Nie doręczony - false
-     */
     private Boolean reportStatus;
 
-    public Historia() {
+    public History() {
+        this.reportStatus = false;
     }
 
-    public BigInteger getPack() {
+    public Long getPack() {
         return pack;
     }
 
-    public void setPack(BigInteger pack) {
+    public void setPack(Long pack) {
         this.pack = pack;
     }
 
@@ -46,11 +44,11 @@ public class Historia {
         this.reportStatus = reportStatus;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
