@@ -5,6 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -24,7 +25,7 @@ public class Package {
     private String name; 
 
     @DBRef
-    private List<History> history;
+    private List<History> history = new ArrayList<>();
 
     public Package() {
     }
