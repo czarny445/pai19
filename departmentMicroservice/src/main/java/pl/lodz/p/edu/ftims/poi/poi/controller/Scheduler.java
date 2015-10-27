@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.http.HttpResponse;
@@ -27,6 +28,8 @@ public class Scheduler {
 
     private static final Logger logger = Logger.getLogger(Scheduler.class.getName());
 
+    private static final ResourceBundle bundle = ResourceBundle.getBundle("application");
+    
     @Autowired
     private HistoryRepository hr;
 
@@ -46,7 +49,7 @@ public class Scheduler {
 
         HistoryListDao historyListDao = new HistoryListDao();
         historyListDao.setHistory(historyDao);
-        historyListDao.setDepartement(1L);//TODO
+        historyListDao.setDepartement(Long.parseLong(bundle.getString("departement")));//TODO
 
         logger.log(Level.INFO, "Scheduler: {0}", historyListDao);
 
@@ -54,7 +57,7 @@ public class Scheduler {
         String toJson = g.toJson(historyListDao);
 
         HttpClient client = new DefaultHttpClient();
-        HttpPost post = new HttpPost("http://localhost:8080/sync");
+        HttpPost post = new HttpPost(bundle.getString("sync.endpoint"));
         StringEntity input = new StringEntity(toJson);
         post.setEntity(input);
         HttpResponse response = client.execute(post);
