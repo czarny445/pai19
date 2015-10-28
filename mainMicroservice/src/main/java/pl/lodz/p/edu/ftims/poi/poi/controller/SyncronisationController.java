@@ -59,24 +59,43 @@ public class SyncronisationController {
         logger.log(Level.INFO, "Sync:{0} h:", h);
         int i = 0;
         ErrorDao errorDao = new ErrorDao(Boolean.FALSE);
+        Long id = 0L;//Do ukoszernienia
         try {
+            Random r = new Random();//Do ukoszernienia
+
             for (HistoryDao history : h.getHistory()) {
-                Random r = new Random();//Do ukoszernienia
+                id = r.nextLong();//Do ukoszernienia
                 Department dep = dr.findOne(h.getDepartement());
                 Package pack = pr.findOne(history.getPack());
                 History historia = new History();
-                historia.setID(r.nextLong());//Do ukoszernienia
+                historia.setID(id);//Do ukoszernienia
                 historia.setPack(pack);
                 historia.setOddzial(dep);
                 historia.setDate(history.getDate());
                 History save = hr.save(historia);
+                
+                if (i >= 1) {
+                    throw new Exception("Test");
+                }; //Test mechanizmu ponawiania
+
                 pack.getHistory().add(save);
                 pr.save(pack);
                 i++;
-                //if(i>=1){throw new Exception("Test");}; //Test mechanizmu ponawiania
             }
         } catch (Exception e) {
             logger.log(Level.SEVERE, "Wyst\u0105pi\u0142 wyj\u0105tek w trakcie przetwarzania: {0}", e);
+            try {
+                History findOne = hr.findOne(id);
+                logger.info(findOne.toString());
+                hr.delete(id);
+                Package pack = findOne.getPack();
+                logger.info(pack.toString());
+                boolean removedRelation = pack.getHistory().remove(findOne);
+                logger.log(Level.INFO, "Removed {0}", removedRelation);
+                pr.save(pack);
+            } catch (Exception ex) {
+                logger.log(Level.SEVERE, "Wyst\u0105pi\u0142 wyj\u0105tek w trakcie wycofywania zmian: {0}", ex);
+            }
             errorDao.setError(Boolean.TRUE);
         }
         errorDao.setInsertedRecords(i);

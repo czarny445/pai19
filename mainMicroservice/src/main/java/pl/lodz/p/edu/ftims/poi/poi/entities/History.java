@@ -6,6 +6,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.GeneratedValue;
 
@@ -65,6 +66,25 @@ public class History {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.ID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final History other = (History) obj;
+        return Objects.equals(this.ID, other.ID);
     }
 
 }

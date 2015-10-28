@@ -5,6 +5,7 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
+import java.util.Objects;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -28,13 +29,13 @@ public class Department {
 
     public Department() {
     }
-    
+
     public Department(Long ID, String name, String address) {
         this.ID = ID;
         this.name = name;
         this.address = address;
     }
-    
+
     public Long getID() {
         return ID;
     }
@@ -61,6 +62,25 @@ public class Department {
 
     public Integer getVersion() {
         return Version;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.ID);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Department other = (Department) obj;
+        return Objects.equals(this.ID, other.ID);
     }
 
 }
