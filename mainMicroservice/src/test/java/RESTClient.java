@@ -25,9 +25,15 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryDao;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryListDao;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
 import pl.lodz.p.edu.ftims.poi.poi.main.SpringBootMainConfiguration;
+import pl.lodz.p.edu.ftims.poi.poi.repository.DepartmentRepository;
+import pl.lodz.p.edu.ftims.poi.poi.repository.HistoryRepository;
+import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
+import pl.lodz.p.edu.ftims.poi.poi.entities.Package;
 
 /**
  *
@@ -36,6 +42,15 @@ import pl.lodz.p.edu.ftims.poi.poi.main.SpringBootMainConfiguration;
 public class RESTClient {
 
     private static final Logger logger = Logger.getLogger(RESTClient.class.getName());
+
+    @Autowired
+    private DepartmentRepository dr;
+
+    @Autowired
+    private PackageRepository pr;
+
+    @Autowired
+    private HistoryRepository hr;
 
     public RESTClient() {
     }
@@ -51,10 +66,27 @@ public class RESTClient {
 
     @Before
     public void setUp() {
+        dr.deleteAll();
+        pr.deleteAll();
+        hr.deleteAll();
+        Department oddzial = new Department(1L, "Pierwszy", "Testowy adres");
+        Department oddzial2 = new Department(2L, "Drugi", "Testowy adres");
+
+        dr.save(oddzial);
+        dr.save(oddzial2);
+        dr.save(new Department(3L, "Trzeci", "Testowy adres"));
+
+        for (int i = 0; i < 10; i++) {
+            Package p = new Package(Long.valueOf(i), new ArrayList<>(), "Paczka " + i);
+            pr.save(p);
+        }
     }
 
     @After
     public void tearDown() {
+        dr.deleteAll();
+        pr.deleteAll();
+        hr.deleteAll();
     }
 
     @Test
@@ -81,14 +113,12 @@ public class RESTClient {
         HttpResponse response = client.execute(post);
         BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
-        String line = "";
+        String line;
         int statusCode = response.getStatusLine().getStatusCode();
-        assertTrue(statusCode==200);
+        assertTrue(statusCode == 200);
 
         while ((line = rd.readLine()) != null) {
-
             System.out.println(line);
-
         }
 
     }

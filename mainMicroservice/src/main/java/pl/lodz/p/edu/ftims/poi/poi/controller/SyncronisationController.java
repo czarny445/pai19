@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.lodz.p.edu.ftims.poi.poi.dao.ErrorDao;
 
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryDao;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryListDao;
@@ -37,7 +38,7 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
 public class SyncronisationController {
 
     private static final Logger logger = Logger.getLogger(SyncronisationController.class.getName());
-    
+
     @Autowired
     HistoryRepository hr;
 
@@ -49,45 +50,55 @@ public class SyncronisationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody
+    @SuppressWarnings("empty-statement")
     String checkpoint(@RequestBody String input) {
         logger.log(Level.INFO, "Sync:{0}", input);
         Gson gson = new Gson();
-        
+
         HistoryListDao h = gson.fromJson(input, HistoryListDao.class);
         logger.log(Level.INFO, "Sync:{0} h:", h);
-        
-        for (HistoryDao history : h.getHistory()) {
-            Random r = new Random();//Do ukoszernienia
-            Department dep = dr.findOne(h.getDepartement());
-            Package pack = pr.findOne(history.getPack());
-            History historia = new History();
-            historia.setID(r.nextLong());//Do ukoszernienia
-            historia.setPack(pack);
-            historia.setOddzial(dep);
-            historia.setDate(history.getDate());
-            History save = hr.save(historia);
-            pack.getHistory().add(save);
-            pr.save(pack);
+        int i = 0;
+        ErrorDao errorDao = new ErrorDao(Boolean.FALSE);
+        try {
+            for (HistoryDao history : h.getHistory()) {
+                Random r = new Random();//Do ukoszernienia
+                Department dep = dr.findOne(h.getDepartement());
+                Package pack = pr.findOne(history.getPack());
+                History historia = new History();
+                historia.setID(r.nextLong());//Do ukoszernienia
+                historia.setPack(pack);
+                historia.setOddzial(dep);
+                historia.setDate(history.getDate());
+                History save = hr.save(historia);
+                pack.getHistory().add(save);
+                pr.save(pack);
+                i++;
+                //if(i>=1){throw new Exception("Test");}; //Test mechanizmu ponawiania
+            }
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "Wyst\u0105pi\u0142 wyj\u0105tek w trakcie przetwarzania: {0}", e);
+            errorDao.setError(Boolean.TRUE);
         }
-
-        return "OK";
+        errorDao.setInsertedRecords(i);
+        return gson.toJson(errorDao);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody HistoryListDao checkpointGet() {
-        HistoryListDao historyListDao = new HistoryListDao();
-        historyListDao.setDepartement(1L);
-        HistoryDao dao = new HistoryDao();
-        HistoryDao dao2 = new HistoryDao();
-
-        dao.setDate(Date.from(Instant.EPOCH));
-        dao2.setDate(Date.from(Instant.now()));
-
-        dao.setPack(1L);
-        dao2.setPack(2L);
-
-        historyListDao.getHistory().add(dao);
-        historyListDao.getHistory().add(dao2);
-        return historyListDao;
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    public @ResponseBody
+//    HistoryListDao checkpointGet() {
+//        HistoryListDao historyListDao = new HistoryListDao();
+//        historyListDao.setDepartement(1L);
+//        HistoryDao dao = new HistoryDao();
+//        HistoryDao dao2 = new HistoryDao();
+//
+//        dao.setDate(Date.from(Instant.EPOCH));
+//        dao2.setDate(Date.from(Instant.now()));
+//
+//        dao.setPack(1L);
+//        dao2.setPack(2L);
+//
+//        historyListDao.getHistory().add(dao);
+//        historyListDao.getHistory().add(dao2);
+//        return historyListDao;
+//    }
 }

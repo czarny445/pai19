@@ -18,6 +18,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import pl.lodz.p.edu.ftims.poi.poi.dao.ErrorDao;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryDao;
 import pl.lodz.p.edu.ftims.poi.poi.dao.HistoryListDao;
 import pl.lodz.p.edu.ftims.poi.poi.entities.History;
@@ -29,21 +30,21 @@ public class Scheduler {
     private static final Logger logger = Logger.getLogger(Scheduler.class.getName());
 
     private static final ResourceBundle bundle = ResourceBundle.getBundle("application");
-    
+
     @Autowired
     private HistoryRepository hr;
 
     @Scheduled(cron = "*/5 * * * * ?")
     public void syncronizeDB() throws UnsupportedEncodingException, IOException {
-        List<History> findByReportStatus = hr.findByReportStatus(Boolean.FALSE);
-        logger.log(Level.INFO, "Scheduler: {0}", findByReportStatus.size());
-        if (0 == findByReportStatus.size()) {
+        List<History> historyNotReported = hr.findByReportStatus(Boolean.FALSE);
+        logger.log(Level.INFO, "Scheduler: {0}", historyNotReported.size());
+        if (0 == historyNotReported.size()) {
             logger.log(Level.INFO, "Scheduler: {0}", "there is no work to do");
             return;
         }
         List<HistoryDao> historyDao = new ArrayList<>();
 
-        findByReportStatus.stream().forEach((history) -> {
+        historyNotReported.stream().forEach((history) -> {
             historyDao.add(new HistoryDao(history));
         });
 
@@ -63,15 +64,21 @@ public class Scheduler {
         HttpResponse response = client.execute(post);
         BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
-        String line = "";
         int statusCode = response.getStatusLine().getStatusCode();
-
-        if (statusCode == 200) {
-            findByReportStatus.stream().forEach((findByReportStatu) -> {
-                logger.log(Level.INFO, "Setting status: {0}", findByReportStatu);
-                findByReportStatu.setReportStatus(Boolean.TRUE);
-                hr.save(findByReportStatu);
+        ErrorDao fromJson = g.fromJson(rd, ErrorDao.class);
+        if (statusCode == 200 && !fromJson.getError()) {
+            historyNotReported.stream().forEach((history) -> {
+                logger.log(Level.INFO, "Setting status: {0}", history);
+                history.setReportStatus(Boolean.TRUE);
+                hr.save(history);
             });
+        } else {
+            for (int i = 0; i < fromJson.getInsertedRecords(); i++) {
+                History history = historyNotReported.get(i);
+                logger.log(Level.INFO, "Setting status: {0}", history);
+                history.setReportStatus(Boolean.TRUE);
+                hr.save(history);
+            }
         }
     }
 
