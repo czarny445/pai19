@@ -20,64 +20,134 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Package {
 
-    @Id
-    private Long ID;
+	@Id
+	private Long ID;
 
-    private String name;
+	private String name;
 
-    @DBRef
-    private List<History> history = new ArrayList<>();
+	private String receiverName;
 
-    public Package() {
-    }
+	private String receiverSubname;
 
-    public Package(Long ID, List<History> history, String name) {
-        this.ID = ID;
-        this.history = history;
-        this.name = name;
-    }
+	private String receiverStreet;
 
-    public Long getID() {
-        return ID;
-    }
+	private String receiverFlatNumber;
 
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
+	private String receiverCity;
 
-    public List<History> getHistory() {
-        return history;
-    }
+	private String receiverPostCode;
 
-    public void setHistory(List<History> history) {
-        this.history = history;
-    }
+	@DBRef
+	private List<History> history = new ArrayList<>();
 
-    public String getName() {
-        return name;
-    }
+	public Package() {
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Package(Long iD, String name, String receiverName,
+			String receiverSubname, String receiverStreet,
+			String receiverFlatNumber, String receiverCity,
+			String receiverPostCode, List<History> history) {
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.ID);
-        return hash;
-    }
+		ID = iD;
+		this.name = name;
+		this.receiverName = receiverName;
+		this.receiverSubname = receiverSubname;
+		this.receiverStreet = receiverStreet;
+		this.receiverFlatNumber = receiverFlatNumber;
+		this.receiverCity = receiverCity;
+		this.receiverPostCode = receiverPostCode;
+		this.history = history;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Package other = (Package) obj;
-        return Objects.equals(this.ID, other.ID);
-    }
+	public Long getID() {
+		return ID;
+	}
+
+	public void setID(Long ID) {
+		this.ID = ID;
+	}
+
+	public List<History> getHistory() {
+		return history;
+	}
+
+	public void setHistory(List<History> history) {
+		this.history = history;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getReceiverName() {
+		return receiverName;
+	}
+
+	public void setReceiverName(String receiverName) {
+		this.receiverName = receiverName;
+	}
+
+	public String getReceiverSubname() {
+		return receiverSubname;
+	}
+
+	public void setReceiverSubname(String receiverSubname) {
+		this.receiverSubname = receiverSubname;
+	}
+
+	public String getReceiverStreet() {
+		return receiverStreet;
+	}
+
+	public void setReceiverStreet(String receiverStreet) {
+		this.receiverStreet = receiverStreet;
+	}
+
+	public String getReceiverFlatNumber() {
+		return receiverFlatNumber;
+	}
+
+	public void setReceiverFlatNumber(String receiverFlatNumber) {
+		this.receiverFlatNumber = receiverFlatNumber;
+	}
+
+	public String getReceiverCity() {
+		return receiverCity;
+	}
+
+	public void setReceiverCity(String receiverCity) {
+		this.receiverCity = receiverCity;
+	}
+
+	public String getReceiverPostCode() {
+		return receiverPostCode;
+	}
+
+	public void setReceiverPostCode(String postCode) {
+		this.receiverPostCode = postCode;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 7;
+		hash = 37 * hash + Objects.hashCode(this.ID);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Package other = (Package) obj;
+		return Objects.equals(this.ID, other.ID);
+	}
 
 }

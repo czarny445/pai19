@@ -6,6 +6,7 @@
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
 import java.util.Objects;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,70 +18,108 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Department {
 
-    @Id
-    private Long ID;
+	@Id
+	private Long ID;
 
-    private String name;
+	private String name;
 
-    private String address;
+	private String street;
 
-    @Version
-    private Integer Version;
+	private String flatNumber;
 
-    public Department() {
-    }
+	private String city;
 
-    public Department(Long ID, String name, String address) {
-        this.ID = ID;
-        this.name = name;
-        this.address = address;
-    }
+	private String postCode;
 
-    public Long getID() {
-        return ID;
-    }
+	@Version
+	private Integer Version;
 
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
+	public Department() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public Department(Long iD, String name, String street, String flatNumber,
+			String city, String postCode) {
+		ID = iD;
+		this.name = name;
+		this.street = street;
+		this.flatNumber = flatNumber;
+		this.city = city;
+		this.postCode = postCode;
+	}
 
-    public String getAddress() {
-        return address;
-    }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
-    public Integer getVersion() {
-        return Version;
-    }
+	public Long getID() {
+		return ID;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.ID);
-        return hash;
-    }
+	public void setID(Long ID) {
+		this.ID = ID;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Department other = (Department) obj;
-        return Objects.equals(this.ID, other.ID);
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getFlatNumber() {
+		return flatNumber;
+	}
+
+	public void setFlatNumber(String flatNumber) {
+		this.flatNumber = flatNumber;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPostCode() {
+		return postCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+
+	public Integer getVersion() {
+		return Version;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 7;
+		hash = 23 * hash + Objects.hashCode(this.ID);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Department other = (Department) obj;
+		return Objects.equals(this.ID, other.ID);
+	}
 
 }

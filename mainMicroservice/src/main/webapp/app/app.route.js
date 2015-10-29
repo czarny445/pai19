@@ -10,4 +10,12 @@ angular
 				templateUrl : "app/components/packagesList/packagesList.html",
 				controller : "PackagesListController as packagesListController"
 			})
+			.when("/newDepartment", {
+				templateUrl : "app/components/newDepartment/newDepartment.html",
+				controller : "NewDepartmentController as newDepartmentController"
+			})
+			.when("/departmentsList", {
+				templateUrl : "app/components/departmentsList/departmentsList.html",
+				controller : "DepartmentsListController as departmentsListController"
+			})
 	});

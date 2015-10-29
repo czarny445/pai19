@@ -1,13 +1,57 @@
-<div ng-init="clicked = false" ng-show="true" class="container">
-	<h1> Nowa paczka</h1>
-	<form class="form-horizontal" name="newPackageForm" novalidate>	
-		<div class="form-grupe">
-			<label>Nazwa:</label>
-			<input class="form-control" type="text" ng-model="newPackageController.newPackage.name"/>
+<div ng-init="clicked = false" ng-show="true" class="container"
+	novalidate
+>
+	<h2>Nowa paczka</h2>
+	<form class="form-horizontal" name="newPackageForm" novalidate>
+		<div class="panel">
+			<div class="form-group">
+				<label>Nazwa:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.name"
+				required/>
+			</div>
 		</div>
-		</br>
-		<div class="form-grupe">
-			<button class="btn"  ng-click="newPackageController.create()" class="button">Dodaj</button>
+		<h3>Dane odbiorcy</h3>
+		<div class="panel">
+			<div class="form-group">
+				<label>Imie:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.receiverName" required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Nazwisko:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.receiverSubname"
+					required"
+				/>
+			</div>
+			<div class="form-group">
+				<label>Ulica:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.receiverStreet"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Numer domu:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.receiverFlatNumber"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Miasto:</label> <input class="form-control" type="text"
+					ng-model="newPackageController.newPackage.receiverCity"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Kod pocztowy::</label> <input class="form-control"
+					type="text"
+					ng-model="newPackageController.newPackage.receiverPostCode"
+					required
+				/>
+			</div>
+			<input type="button" class="btn btn-primary"
+				ng-click="newPackageController.create()" value="Dodaj paczke"
+				ng-disabled="newPackageForm.$invalid"
+			/>
 		</div>
 	</form>
 </div>

@@ -26,95 +26,99 @@ import pl.lodz.p.edu.ftims.poi.poi.repository.PackageRepository;
 @ComponentScan("pl.lodz.p.edu.ftims.poi.poi")
 public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 
-    @Autowired
-    private DepartmentRepository dr;
+	@Autowired
+	private DepartmentRepository dr;
 
-    @Autowired
-    private PackageRepository pr;
+	@Autowired
+	private PackageRepository pr;
 
-    @Autowired
-    private HistoryRepository hr;
+	@Autowired
+	private HistoryRepository hr;
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringBootMainConfiguration.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(SpringBootMainConfiguration.class, args);
+	}
 
-//    @RequestMapping("/")
-//    @ResponseBody
-//    String home() {
-//        return "Hello World!";
-//    }
-//    
-    @PostConstruct
-    public void run() throws Exception {
+	// @RequestMapping("/")
+	// @ResponseBody
+	// String home() {
+	// return "Hello World!";
+	// }
+	//
+	@PostConstruct
+	public void run() throws Exception {
 
-        System.out.println("----- Aplikacja uruchomiona -----");
-        System.out.println("----- Czyszczenie bazy -----");
+		System.out.println("----- Aplikacja uruchomiona -----");
+		System.out.println("----- Czyszczenie bazy -----");
 
-        dr.deleteAll();
-        pr.deleteAll();
-        hr.deleteAll();
-        System.out.println("----- Wypełnianie danymi    -----");
-        Department oddzial = new Department(1L, "Pierwszy", "Testowy adres");
-        Department oddzial2 = new Department(2L, "Drugi", "Testowy adres");
+		dr.deleteAll();
+		pr.deleteAll();
+		hr.deleteAll();
+		System.out.println("----- Wypełnianie danymi    -----");
+		int k = 5;
 
-        dr.save(oddzial);
-        dr.save(oddzial2);
-        dr.save(new Department(3L, "Trzeci", "Testowy adres"));
-//        Department findByName = dr.findByName("Pierwszy");
-//        findByName.setAddress("Nowy adres");
-//        dr.save(findByName);
-//
-         for(int i = 0; i<10;i++){
-        	 Package p = new Package(Long.valueOf(i), new ArrayList<>(), "Paczka " + i);
-        	 pr.save(p);
-         }
-//        History historia = new History();
-//        History historia2 = new History();
-//        Package p = new Package();
-//        Package p1 = new Package();
-//        Package p2 = new Package();
-//        Package p3 = new Package();
-//        
-//        p.setID(1L);
-//        p1.setID(2L);
-//        p2.setID(3L);
-//        p3.setID(4L);
-//        
-//        historia.setID(1L);
-//        historia.setPack(p);
-//        historia.setOddzial(oddzial);
-//        historia2.setID(2L);
-//        historia2.setPack(p);
-//        historia2.setOddzial(oddzial2);
-//        ArrayList<History> arrayList = new ArrayList<>();
-//        arrayList.add(historia);
-//        arrayList.add(historia2);
-//        p.setHistory(arrayList);
-//
-//        pr.save(p);
-//        pr.save(p1);
-//        pr.save(p2);
-//        pr.save(p3);
-//        hr.save(historia);
-//        hr.save(historia2);
-//
-//        for (Department dprm : dr.findAll()) {
-//            System.out.println(dprm.toString());
-//        }
+		for (int i = 0; i < k; i++) {
+			Department d = new Department(Long.valueOf(i), "Nazwa "+i,
+					"Ulica " + i,
+					"" + i,
+					"Miasto " + i,
+					"" + i + i + "-" + i + i + i);
+			dr.save(d);
+		}
+		
+		for (int i = 0; i < k; i++) {
+			Package p = new Package(Long.valueOf(i), "Paczka " + i,
+					"Imie " + i, "Nazwisko " + i, "Ulica " + i, "" + i,
+					"Miasto " + i, "" + i + i + "-" + i + i + i,
+					new ArrayList<History>());
+			pr.save(p);
+		}
+		// History historia = new History();
+		// History historia2 = new History();
+		// Package p = new Package();
+		// Package p1 = new Package();
+		// Package p2 = new Package();
+		// Package p3 = new Package();
+		//
+		// p.setID(1L);
+		// p1.setID(2L);
+		// p2.setID(3L);
+		// p3.setID(4L);
+		//
+		// historia.setID(1L);
+		// historia.setPack(p);
+		// historia.setOddzial(oddzial);
+		// historia2.setID(2L);
+		// historia2.setPack(p);
+		// historia2.setOddzial(oddzial2);
+		// ArrayList<History> arrayList = new ArrayList<>();
+		// arrayList.add(historia);
+		// arrayList.add(historia2);
+		// p.setHistory(arrayList);
+		//
+		// pr.save(p);
+		// pr.save(p1);
+		// pr.save(p2);
+		// pr.save(p3);
+		// hr.save(historia);
+		// hr.save(historia2);
+		//
+		// for (Department dprm : dr.findAll()) {
+		// System.out.println(dprm.toString());
+		// }
 
-//        while(true);
-    }
+		// while(true);
+	}
 
-    @Override
-    protected String getDatabaseName() {
-        return "poi";
-    }
+	@Override
+	protected String getDatabaseName() {
+		return "poi";
+	}
 
-    @Override
-    public Mongo mongo() throws Exception {
-        Mongo mongo = new Mongo("localhost");
-        return mongo;
-    }
+	@Override
+	public Mongo mongo() throws Exception {
+		Mongo mongo = new Mongo("localhost");
+		return mongo;
+	}
 
 }
