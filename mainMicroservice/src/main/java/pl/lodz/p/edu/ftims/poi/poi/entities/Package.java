@@ -21,7 +21,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Package {
 
     @Id
-    private Long ID;
+    private String ID;
 
     private String name;
 
@@ -31,17 +31,17 @@ public class Package {
     public Package() {
     }
 
-    public Package(Long ID, List<History> history, String name) {
+    public Package(String ID, List<History> history, String name) {
         this.ID = ID;
         this.history = history;
         this.name = name;
     }
 
-    public Long getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

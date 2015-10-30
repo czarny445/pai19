@@ -28,8 +28,6 @@ public class PackageController {
 	 
 	 @RequestMapping("/create")
 		public @ResponseBody Package create(@RequestBody Package pack) {
-			Random r = new Random();
-			pack.setID(r.nextLong());
 			pr.save(pack);
 			return pack;			
 		}

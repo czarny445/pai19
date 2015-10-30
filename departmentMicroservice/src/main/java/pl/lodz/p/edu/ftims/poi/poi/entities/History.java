@@ -5,7 +5,6 @@
  */
 package pl.lodz.p.edu.ftims.poi.poi.entities;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,7 +17,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class History {
 
     @Id
-    private Long pack;
+    private String pack;
 
     private Date date;
 
@@ -28,11 +27,11 @@ public class History {
         this.reportStatus = false;
     }
 
-    public Long getPack() {
+    public String getPack() {
         return pack;
     }
 
-    public void setPack(Long pack) {
+    public void setPack(String pack) {
         this.pack = pack;
     }
 

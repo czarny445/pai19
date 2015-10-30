@@ -13,6 +13,6 @@ import pl.lodz.p.edu.ftims.poi.poi.entities.History;
  * http://docs.spring.io/spring-data/rest/docs/current/reference/html/
  * @author lwieczor
  */
-public interface HistoryRepository extends MongoRepository<History, Long> {
+public interface HistoryRepository extends MongoRepository<History, String> {
     
 }

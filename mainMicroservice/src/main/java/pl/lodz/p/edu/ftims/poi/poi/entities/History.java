@@ -23,7 +23,7 @@ public class History {
 
     @Id
     @GeneratedValue
-    private Long ID;
+    private String ID;
 
     @DBRef
     private Department oddzial;
@@ -36,11 +36,11 @@ public class History {
     public History() {
     }
 
-    public Long getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(Long ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

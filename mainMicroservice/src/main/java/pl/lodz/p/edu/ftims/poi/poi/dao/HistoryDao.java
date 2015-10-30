@@ -13,18 +13,18 @@ import java.util.Date;
  */
 public class HistoryDao {
 
-    private Long pack;
+    private String pack;
 
     private Date date;
 
     public HistoryDao() {
     }
 
-    public Long getPack() {
+    public String getPack() {
         return pack;
     }
 
-    public void setPack(Long pack) {
+    public void setPack(String pack) {
         this.pack = pack;
     }
 

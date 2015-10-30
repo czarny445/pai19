@@ -45,6 +45,8 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 
         System.out.println("----- Aplikacja uruchomiona -----");
         System.out.println("----- Czyszczenie bazy -----");
+        hr.deleteAll();
+        
         System.out.println("----- Wypełnianie danymi    -----");
 //        Department findByName = dr.findByName("Pierwszy");
 //        findByName.setAddress("Nowy adres");
@@ -58,9 +60,9 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         history2.setDate(Date.from(LocalDateTime.now().minusDays(4).minusHours(1).atZone(ZoneId.systemDefault()).toInstant()));
         history3.setDate(Date.from(LocalDateTime.now().minusDays(5).minusHours(3).atZone(ZoneId.systemDefault()).toInstant()));
 
-        history.setPack(1L);
-        history2.setPack(2L);
-        history3.setPack(3L);
+        history.setPack("1");
+        history2.setPack("2");
+        history3.setPack("3");
 
         history.setReportStatus(Boolean.TRUE);
         history2.setReportStatus(Boolean.FALSE);

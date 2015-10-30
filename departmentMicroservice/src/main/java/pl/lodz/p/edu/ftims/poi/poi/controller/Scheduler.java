@@ -50,7 +50,7 @@ public class Scheduler {
 
         HistoryListDao historyListDao = new HistoryListDao();
         historyListDao.setHistory(historyDao);
-        historyListDao.setDepartement(Long.parseLong(bundle.getString("departement")));//TODO
+        historyListDao.setDepartement(bundle.getString("departement"));
 
         logger.log(Level.INFO, "Scheduler: {0}", historyListDao);
 
@@ -68,15 +68,15 @@ public class Scheduler {
         ErrorDao fromJson = g.fromJson(rd, ErrorDao.class);
         if (statusCode == 200 && !fromJson.getError()) {
             historyNotReported.stream().forEach((history) -> {
-                logger.log(Level.INFO, "Setting status: {0}", history);
                 history.setReportStatus(Boolean.TRUE);
+                logger.log(Level.INFO, "Setting status: {0}", history);
                 hr.save(history);
             });
         } else {
             for (int i = 0; i < fromJson.getInsertedRecords(); i++) {
                 History history = historyNotReported.get(i);
-                logger.log(Level.INFO, "Setting status: {0}", history);
                 history.setReportStatus(Boolean.TRUE);
+                logger.log(Level.INFO, "Setting status: {0}", history);
                 hr.save(history);
             }
         }

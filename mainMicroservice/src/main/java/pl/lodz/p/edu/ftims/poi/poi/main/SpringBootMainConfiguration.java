@@ -4,6 +4,7 @@ import com.mongodb.Mongo;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -55,18 +56,18 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
         pr.deleteAll();
         hr.deleteAll();
         System.out.println("----- Wypełnianie danymi    -----");
-        Department oddzial = new Department(1L, "Pierwszy", "Testowy adres");
-        Department oddzial2 = new Department(2L, "Drugi", "Testowy adres");
+        Department oddzial = new Department("1", "Pierwszy", "Testowy adres");
+        Department oddzial2 = new Department("2", "Drugi", "Testowy adres");
 
         dr.save(oddzial);
         dr.save(oddzial2);
-        dr.save(new Department(3L, "Trzeci", "Testowy adres"));
+        dr.save(new Department("2", "Trzeci", "Testowy adres"));
 //        Department findByName = dr.findByName("Pierwszy");
 //        findByName.setAddress("Nowy adres");
 //        dr.save(findByName);
 //
          for(int i = 0; i<10;i++){
-        	 Package p = new Package(Long.valueOf(i), new ArrayList<>(), "Paczka " + i);
+        	 Package p = new Package(String.valueOf(i), new ArrayList<>(), "Paczka " + i);
         	 pr.save(p);
          }
 //        History historia = new History();

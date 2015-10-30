@@ -19,6 +19,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -69,15 +70,15 @@ public class RESTClient {
         dr.deleteAll();
         pr.deleteAll();
         hr.deleteAll();
-        Department oddzial = new Department(1L, "Pierwszy", "Testowy adres");
-        Department oddzial2 = new Department(2L, "Drugi", "Testowy adres");
+        Department oddzial = new Department("1", "Pierwszy", "Testowy adres");
+        Department oddzial2 = new Department("2", "Drugi", "Testowy adres");
 
         dr.save(oddzial);
         dr.save(oddzial2);
-        dr.save(new Department(3L, "Trzeci", "Testowy adres"));
+        dr.save(new Department("3", "Trzeci", "Testowy adres"));
 
         for (int i = 0; i < 10; i++) {
-            Package p = new Package(Long.valueOf(i), new ArrayList<>(), "Paczka " + i);
+            Package p = new Package(String.valueOf(i), new ArrayList<>(), "Paczka " + i);
             pr.save(p);
         }
     }
@@ -94,13 +95,13 @@ public class RESTClient {
 
         HistoryDao dao = new HistoryDao();
         dao.setDate(Date.from(Instant.EPOCH));
-        dao.setPack(1L);
+        dao.setPack("1");
         HistoryListDao dao1 = new HistoryListDao();
-        dao1.setDepartement(1L);
+        dao1.setDepartement("1");
         ArrayList<HistoryDao> arrayList = new ArrayList<>();
         arrayList.add(dao);
         dao1.setHistory(arrayList);
-        dao1.setDepartement(1L);
+        dao1.setDepartement("1");
 
         Gson g = new Gson();
         String toJson = g.toJson(dao1);

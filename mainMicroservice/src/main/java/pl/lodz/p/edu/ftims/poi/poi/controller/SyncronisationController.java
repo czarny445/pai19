@@ -59,12 +59,10 @@ public class SyncronisationController {
         logger.log(Level.INFO, "Sync:{0} h:", h);
         int i = 0;
         ErrorDao errorDao = new ErrorDao(Boolean.FALSE);
-        Long id = 0L;//Do ukoszernienia
+        String id = new String();//Do ukoszernienia
         try {
-            Random r = new Random();//Do ukoszernienia
 
             for (HistoryDao history : h.getHistory()) {
-                id = r.nextLong();//Do ukoszernienia
                 Department dep = dr.findOne(h.getDepartement());
                 Package pack = pr.findOne(history.getPack());
                 History historia = new History();
@@ -73,10 +71,11 @@ public class SyncronisationController {
                 historia.setOddzial(dep);
                 historia.setDate(history.getDate());
                 History save = hr.save(historia);
+                id = save.getID();
                 
-                if (i >= 1) {
-                    throw new Exception("Test");
-                }; //Test mechanizmu ponawiania
+//                if (i >= 1) {
+//                    throw new Exception("Test");
+//                }; //Test mechanizmu ponawiania
 
                 pack.getHistory().add(save);
                 pr.save(pack);

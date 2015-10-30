@@ -13,6 +13,6 @@ import pl.lodz.p.edu.ftims.poi.poi.entities.Package;
  * http://docs.spring.io/spring-data/rest/docs/current/reference/html/
  * @author lwieczor
  */
-public interface PackageRepository extends MongoRepository<Package, Long> {
+public interface PackageRepository extends MongoRepository<Package, String> {
     
 }

@@ -14,11 +14,11 @@ import pl.lodz.p.edu.ftims.poi.poi.entities.History;
  *
  * @author lwieczor
  */
-public interface HistoryRepository extends MongoRepository<History, Long> {
+public interface HistoryRepository extends MongoRepository<History, String> {
 
     @Override
     @RestResource(exported = false)
-    void delete(Long id);
+    void delete(String id);
 
     @Override
     @RestResource(exported = false)

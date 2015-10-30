@@ -14,7 +14,7 @@ import pl.lodz.p.edu.ftims.poi.poi.entities.Department;
  * http://docs.spring.io/spring-data/rest/docs/current/reference/html/
  * @author lwieczor
  */
-public interface DepartmentRepository extends MongoRepository<Department, Long> {
+public interface DepartmentRepository extends MongoRepository<Department, String> {
 
     /**
      *

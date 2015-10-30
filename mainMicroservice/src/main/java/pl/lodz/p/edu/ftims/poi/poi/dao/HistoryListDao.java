@@ -16,7 +16,7 @@ public class HistoryListDao {
 
     List<HistoryDao> history = new ArrayList<>();
     
-    Long departement;
+    String departement;
 
     public List<HistoryDao> getHistory() {
         return history;
@@ -26,11 +26,11 @@ public class HistoryListDao {
         this.history = history;
     }
 
-    public Long getDepartement() {
+    public String getDepartement() {
         return departement;
     }
 
-    public void setDepartement(Long departement) {
+    public void setDepartement(String departement) {
         this.departement = departement;
     }
 
