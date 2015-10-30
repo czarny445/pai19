@@ -1,0 +1,47 @@
+<div ng-init="clicked = false" ng-show="true" class="container"
+	novalidate
+>
+	<h2>Nowy oddzia³</h2>
+	<form class="form-horizontal" name="newDepartmentForm" novalidate>
+		<div class="panel">
+			<div class="form-group">
+				<label>Nazwa:</label> <input class="form-control" type="text"
+					ng-model="newDepartmentController.newDepartment.name"
+				required/>
+			</div>
+		</div>
+		<h3>Lokalizacja oddzia³u</h3>
+		<div class="panel">
+			</div>
+			<div class="form-group">
+				<label>Ulica:</label> <input class="form-control" type="text"
+					ng-model="newDepartmentController.newDepartment.street"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Numer lokalu:</label> <input class="form-control" type="text"
+					ng-model="newDepartmentController.newDepartment.flatNumber"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Miasto:</label> <input class="form-control" type="text"
+					ng-model="newDepartmentController.newDepartment.city"
+					required
+				/>
+			</div>
+			<div class="form-group">
+				<label>Kod pocztowy::</label> <input class="form-control"
+					type="text"
+					ng-model="newDepartmentController.newDepartment.postCode"
+					required
+				/>
+			</div>
+			<input type="button" class="btn btn-primary"
+				ng-click="newDepartmentController.create()" value="Dodaj oddzia³"
+				ng-disabled="newDepartmentForm.$invalid"
+			/>
+		</div>
+	</form>
+</div>

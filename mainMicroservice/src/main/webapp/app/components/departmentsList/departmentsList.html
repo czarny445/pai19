@@ -1,0 +1,20 @@
+<div ng-init="clicked = false" ng-show="true" class="container">
+	<h3>Lista oddzia³ów</h3>
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nazwa</th>
+					<th>Miasto</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="department in departmentsListController.departments">
+					<td> {{department.name}}</td>
+					<td> {{department.city}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>

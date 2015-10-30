@@ -12,6 +12,7 @@ function newPackageController($scope, $http){
 			}
 			else{
 				console.log("dodano paczke");
+				ctrl.newPackage = {};
 			}
 		});
 	};
