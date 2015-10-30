@@ -21,116 +21,101 @@ public class Department {
     @Id
     private String ID;
 
-	private String name;
+    private String name;
 
-	private String street;
+    private String street;
 
-	private String flatNumber;
+    private String flatNumber;
 
-	private String city;
+    private String city;
 
-    public Department(String ID, String name, String address) {
-        this.ID = ID;
-        this.name = name;
-        this.address = address;
+    private String postCode;
+
+    @Version
+    private Integer Version;
+
+    public Department() {
     }
-	private String postCode;
+
+    public Department(String id, String name, String street, String flatNumber,
+            String city, String postCode) {
+        this.ID = id;
+        this.name = name;
+        this.street = street;
+        this.flatNumber = flatNumber;
+        this.city = city;
+        this.postCode = postCode;
+    }
 
     public String getID() {
         return ID;
     }
-	@Version
-	private Integer Version;
 
     public void setID(String ID) {
         this.ID = ID;
     }
-	public Department() {
-	}
 
-	
+    public String getName() {
+        return name;
+    }
 
-	public Department(Long iD, String name, String street, String flatNumber,
-			String city, String postCode) {
-		ID = iD;
-		this.name = name;
-		this.street = street;
-		this.flatNumber = flatNumber;
-		this.city = city;
-		this.postCode = postCode;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public String getStreet() {
+        return street;
+    }
 
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public Long getID() {
-		return ID;
-	}
+    public String getFlatNumber() {
+        return flatNumber;
+    }
 
-	public void setID(Long ID) {
-		this.ID = ID;
-	}
+    public void setFlatNumber(String flatNumber) {
+        this.flatNumber = flatNumber;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public String getPostCode() {
+        return postCode;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
 
-	public String getFlatNumber() {
-		return flatNumber;
-	}
+    public Integer getVersion() {
+        return Version;
+    }
 
-	public void setFlatNumber(String flatNumber) {
-		this.flatNumber = flatNumber;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.ID);
+        return hash;
+    }
 
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
-	public Integer getVersion() {
-		return Version;
-	}
-
-	@Override
-	public int hashCode() {
-		int hash = 7;
-		hash = 23 * hash + Objects.hashCode(this.ID);
-		return hash;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final Department other = (Department) obj;
-		return Objects.equals(this.ID, other.ID);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Department other = (Department) obj;
+        return Objects.equals(this.ID, other.ID);
+    }
 
 }

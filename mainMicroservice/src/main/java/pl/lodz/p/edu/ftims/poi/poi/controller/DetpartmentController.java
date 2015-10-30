@@ -29,8 +29,6 @@ public class DetpartmentController {
 	
 	@RequestMapping("/create")
 	public @ResponseBody Department create(@RequestBody Department department) {
-		Random r = new Random();
-		department.setID(Math.abs(r.nextLong()));
 		dr.save(department);
 		return department;			
 	}

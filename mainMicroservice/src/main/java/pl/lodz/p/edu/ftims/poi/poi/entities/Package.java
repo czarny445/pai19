@@ -23,142 +23,131 @@ public class Package {
     @Id
     private String ID;
 
-	private String name;
+    private String name;
 
-	private String receiverName;
+    private String receiverName;
 
-	private String receiverSubname;
+    private String receiverSubname;
 
-    public Package(String ID, List<History> history, String name) {
-        this.ID = ID;
-        this.history = history;
-        this.name = name;
+    private String receiverStreet;
+
+    private String receiverFlatNumber;
+
+    private String receiverCity;
+
+    private String receiverPostCode;
+
+    @DBRef
+    private List<History> history = new ArrayList<>();
+
+    public Package() {
     }
-	private String receiverStreet;
+
+    public Package(String iD, String name, String receiverName,
+            String receiverSubname, String receiverStreet,
+            String receiverFlatNumber, String receiverCity,
+            String receiverPostCode, List<History> history) {
+
+        this.ID = iD;
+        this.name = name;
+        this.receiverName = receiverName;
+        this.receiverSubname = receiverSubname;
+        this.receiverStreet = receiverStreet;
+        this.receiverFlatNumber = receiverFlatNumber;
+        this.receiverCity = receiverCity;
+        this.receiverPostCode = receiverPostCode;
+        this.history = history;
+    }
 
     public String getID() {
         return ID;
     }
-	private String receiverFlatNumber;
 
     public void setID(String ID) {
         this.ID = ID;
     }
-	private String receiverCity;
 
-	private String receiverPostCode;
+    public List<History> getHistory() {
+        return history;
+    }
 
-	@DBRef
-	private List<History> history = new ArrayList<>();
+    public void setHistory(List<History> history) {
+        this.history = history;
+    }
 
-	public Package() {
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Package(Long iD, String name, String receiverName,
-			String receiverSubname, String receiverStreet,
-			String receiverFlatNumber, String receiverCity,
-			String receiverPostCode, List<History> history) {
+    public void setName(String name) {
+        this.name = name;
+    }
 
-		ID = iD;
-		this.name = name;
-		this.receiverName = receiverName;
-		this.receiverSubname = receiverSubname;
-		this.receiverStreet = receiverStreet;
-		this.receiverFlatNumber = receiverFlatNumber;
-		this.receiverCity = receiverCity;
-		this.receiverPostCode = receiverPostCode;
-		this.history = history;
-	}
+    public String getReceiverName() {
+        return receiverName;
+    }
 
-	public Long getID() {
-		return ID;
-	}
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
 
-	public void setID(Long ID) {
-		this.ID = ID;
-	}
+    public String getReceiverSubname() {
+        return receiverSubname;
+    }
 
-	public List<History> getHistory() {
-		return history;
-	}
+    public void setReceiverSubname(String receiverSubname) {
+        this.receiverSubname = receiverSubname;
+    }
 
-	public void setHistory(List<History> history) {
-		this.history = history;
-	}
+    public String getReceiverStreet() {
+        return receiverStreet;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setReceiverStreet(String receiverStreet) {
+        this.receiverStreet = receiverStreet;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getReceiverFlatNumber() {
+        return receiverFlatNumber;
+    }
 
-	public String getReceiverName() {
-		return receiverName;
-	}
+    public void setReceiverFlatNumber(String receiverFlatNumber) {
+        this.receiverFlatNumber = receiverFlatNumber;
+    }
 
-	public void setReceiverName(String receiverName) {
-		this.receiverName = receiverName;
-	}
+    public String getReceiverCity() {
+        return receiverCity;
+    }
 
-	public String getReceiverSubname() {
-		return receiverSubname;
-	}
+    public void setReceiverCity(String receiverCity) {
+        this.receiverCity = receiverCity;
+    }
 
-	public void setReceiverSubname(String receiverSubname) {
-		this.receiverSubname = receiverSubname;
-	}
+    public String getReceiverPostCode() {
+        return receiverPostCode;
+    }
 
-	public String getReceiverStreet() {
-		return receiverStreet;
-	}
+    public void setReceiverPostCode(String postCode) {
+        this.receiverPostCode = postCode;
+    }
 
-	public void setReceiverStreet(String receiverStreet) {
-		this.receiverStreet = receiverStreet;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.ID);
+        return hash;
+    }
 
-	public String getReceiverFlatNumber() {
-		return receiverFlatNumber;
-	}
-
-	public void setReceiverFlatNumber(String receiverFlatNumber) {
-		this.receiverFlatNumber = receiverFlatNumber;
-	}
-
-	public String getReceiverCity() {
-		return receiverCity;
-	}
-
-	public void setReceiverCity(String receiverCity) {
-		this.receiverCity = receiverCity;
-	}
-
-	public String getReceiverPostCode() {
-		return receiverPostCode;
-	}
-
-	public void setReceiverPostCode(String postCode) {
-		this.receiverPostCode = postCode;
-	}
-
-	@Override
-	public int hashCode() {
-		int hash = 7;
-		hash = 37 * hash + Objects.hashCode(this.ID);
-		return hash;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		final Package other = (Package) obj;
-		return Objects.equals(this.ID, other.ID);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Package other = (Package) obj;
+        return Objects.equals(this.ID, other.ID);
+    }
 
 }

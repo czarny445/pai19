@@ -59,7 +59,7 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 		int k = 5;
 
 		for (int i = 0; i < k; i++) {
-			Department d = new Department(Long.valueOf(i), "Nazwa "+i,
+			Department d = new Department(String.valueOf(i), "Nazwa "+i,
 					"Ulica " + i,
 					"" + i,
 					"Miasto " + i,
@@ -68,7 +68,7 @@ public class SpringBootMainConfiguration extends AbstractMongoConfiguration {
 		}
 		
 		for (int i = 0; i < k; i++) {
-			Package p = new Package(Long.valueOf(i), "Paczka " + i,
+			Package p = new Package(String.valueOf(i), "Paczka " + i,
 					"Imie " + i, "Nazwisko " + i, "Ulica " + i, "" + i,
 					"Miasto " + i, "" + i + i + "-" + i + i + i,
 					new ArrayList<History>());
