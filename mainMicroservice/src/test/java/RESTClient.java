@@ -67,20 +67,20 @@ public class RESTClient {
 
     @Before
     public void setUp() {
-        dr.deleteAll();
-        pr.deleteAll();
-        hr.deleteAll();
-        Department oddzial = new Department("1", "Pierwszy", "Testowy adres");
-        Department oddzial2 = new Department("2", "Drugi", "Testowy adres");
-
-        dr.save(oddzial);
-        dr.save(oddzial2);
-        dr.save(new Department("3", "Trzeci", "Testowy adres"));
-
-        for (int i = 0; i < 10; i++) {
-            Package p = new Package(String.valueOf(i), new ArrayList<>(), "Paczka " + i);
-            pr.save(p);
-        }
+//        dr.deleteAll();
+//        pr.deleteAll();
+//        hr.deleteAll();
+//        Department oddzial = new Department("1", "Pierwszy", "Testowy adres");
+//        Department oddzial2 = new Department("2", "Drugi", "Testowy adres");
+//
+//        dr.save(oddzial);
+//        dr.save(oddzial2);
+//        dr.save(new Department("3", "Trzeci", "Testowy adres"));
+//
+//        for (int i = 0; i < 10; i++) {
+//            Package p = new Package(String.valueOf(i), new ArrayList<>(), "Paczka " + i);
+//            pr.save(p);
+//        }
     }
 
     @After
