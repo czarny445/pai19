@@ -18,4 +18,8 @@ angular
 				templateUrl : "app/components/departmentsList/departmentsList.html",
 				controller : "DepartmentsListController as departmentsListController"
 			})
+			.when("/historyPackage", {
+				templateUrl : "app/components/historyPackage/historyPackage.html",
+				controller : "HistoryPackageController as historyPackageController"
+			})
 	});

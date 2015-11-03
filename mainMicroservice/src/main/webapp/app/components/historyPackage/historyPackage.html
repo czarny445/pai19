@@ -1,0 +1,18 @@
+<div ng-init="clicked = false" ng-show="true" class="container">
+	<div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Data zmiany</th>
+					<th>Oddzia³</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="history in historyPackageController.chosePackage.history">
+					<td>{{history.date | date:'yyyy-MM-dd'}}</td>
+					<td>{{history.oddzial.street}} {{history.oddzial.flatNumber}} {{history.oddzial.postCode}} {{history.oddzial.city}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="button" class="btn btn-primary" value="Powrót" ng-click="historyPackageController.back()" />
+</div>

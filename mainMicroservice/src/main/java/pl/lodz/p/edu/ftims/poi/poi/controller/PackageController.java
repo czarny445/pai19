@@ -31,4 +31,9 @@ public class PackageController {
 			pr.save(pack);
 			return pack;			
 		}
+	 
+	 @RequestMapping("/remove")
+		public @ResponseBody void remove(@RequestBody Package pack) {
+			pr.delete(pack);			
+		}
 }
