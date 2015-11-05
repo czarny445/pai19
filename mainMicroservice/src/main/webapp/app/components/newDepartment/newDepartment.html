@@ -1,7 +1,9 @@
-<div ng-init="clicked = false" ng-show="true" class="container"
-	novalidate
->
-	<h2>Nowy oddzia�</h2>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Nowy oddzia&#322;</h1>
+	</div>
+</div>
+<div class="col-lg-6">
 	<form class="form-horizontal" name="newDepartmentForm" novalidate>
 		<div class="panel">
 			<div class="form-group">
@@ -10,7 +12,7 @@
 				required/>
 			</div>
 		</div>
-		<h3>Lokalizacja oddzia�u</h3>
+		<h4>Lokalizacja oddzia&#322;u</h4>
 		<div class="panel">
 			<div class="form-group">
 				<label>Ulica:</label> <input class="form-control" type="text"
@@ -38,7 +40,7 @@
 				/>
 			</div>
 			<input type="button" class="btn btn-primary"
-				ng-click="newDepartmentController.create()" value="Dodaj oddzia�"
+				ng-click="newDepartmentController.create()" value="Dodaj oddzia&#322;"
 				ng-disabled="newDepartmentForm.$invalid"
 			/>
 		</div>

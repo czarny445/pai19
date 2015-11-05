@@ -1,18 +1,25 @@
-<div ng-init="clicked = false" ng-show="true" class="container">
-	<h3>Lista paczek</h3>
-	<div class="panel panel-primary" ng-repeat="package in packagesListController.packages">
-		<div class="panel-heading ">
-			{{package.name}}
-		</div class="panel-body pagination">
-			<span class="">{{package.receiverName}} {{package.receiverSubname}}</span></br>
-			<span class="">{{package.receiverStreet}} {{package.receiverFlatNumber}}</span></br>
-			<span class="">{{package.receiverPostCode}} {{package.receiverCity}}</span></br>
-		<div>
-		<div class="panel-footer">
-			<input type="button" class="btn btn-primary" value="Historia" ng-click="packagesListController.showHistory(package)" />
-			<input type="button" class="btn btn-danger" value="Usuñ" ng-click="packagesListController.remove(package)"/>
-		</div>	
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Lista paczek</h1>
+	</div>
+</div>
+<div class="row">
+	<div  ng-repeat="package in packagesListController.packages">
+		<div class="col-lg-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading ">
+					{{package.name}}
+				</div>
+				<div class="panel-body panel">
+					<span class="">{{package.receiverName}} {{package.receiverSubname}}</span></br>
+					<span class="">{{package.receiverStreet}} {{package.receiverFlatNumber}}</span></br>
+					<span class="">{{package.receiverPostCode}} {{package.receiverCity}}</span></br>
+				</div>
+				<div class="panel-footer">
+					<input type="button" class="btn btn-info" value="Historia" ng-click="packagesListController.showHistory(package)" />
+					<input type="button" class="btn btn-danger" value="Usu&#324;" ng-click="packagesListController.remove(package)"/>
+				</div>
+			</div>
 		</div>
-
 	</div>
 </div>

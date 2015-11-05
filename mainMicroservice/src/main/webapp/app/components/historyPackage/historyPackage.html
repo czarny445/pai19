@@ -1,10 +1,14 @@
-<div ng-init="clicked = false" ng-show="true" class="container">
-	<div>
+<div class="row">
+	<div class="col-lg-12">
+		<h1 class="page-header">Historia paczki {{historyPackageController.chosePackage.name}}</h1>
+	</div>
+</div>
+<div class="col-lg-6">
 		<table class="table">
 			<thead>
 				<tr>
 					<th>Data zmiany</th>
-					<th>Oddzia³</th>
+					<th>Oddzia&#322;</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -14,5 +18,5 @@
 				</tr>
 			</tbody>
 		</table>
-		<input type="button" class="btn btn-primary" value="Powrót" ng-click="historyPackageController.back()" />
+		<input type="button" class="btn btn-primary" value="Powr&#243;t" ng-click="historyPackageController.back()" />
 </div>

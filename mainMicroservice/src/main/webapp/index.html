@@ -3,30 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>PAI Browser Client</title>
-<link href="app/css/bootstrap.css" rel="stylesheet" />
-<link href="app/css/bootstrap-theme.css" rel="stylesheet" />
+<link href="app/css/bootstrap.min.css" rel="stylesheet" />
+<link href="app/css/sb-admin.css" rel="stylesheet" />
+<link href="app/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css"
+>
 </head>
 <body ng-controller="MainController as main">
-	<div class="well">
-		<h1>Firma Kurierska</h1>
-	</div>
-	<div class="panel panel-default row ">
-		<div class="col-xs-2">
-			<a href="#/newPackage">
-				<button class="btn btn-default btn-lg btn-block navbar-btn">Nowa paczka</button>
-			</a> 
-			<a href="#/packagesList">
-				<button class="btn btn-default btn-lg btn-block navbar-btn">Lista paczek</button>
-			</a>
-			<a href="#/newDepartment">
-				<button class="btn btn-default btn-lg btn-block navbar-btn">Nowy oddział</button>
-			</a>
-			<a href="#/departmentsList">
-				<button class="btn btn-default btn-lg btn-block navbar-btn">Lista oddziałów</button>
-			</a>
-		</div>
-		<div class="col-xs-8">
-				<div ng-view></div>
+	<div id="wrapper">
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar-header">
+				<h3>Firma kurierska</h3>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav side-nav">
+					<li>
+						<a href="#/newPackage">Nowa paczka</a>
+					</li>
+					<li>
+						<a href="#/packagesList">Lista paczek</a>
+					</li>
+					<li>
+						<a href="#/newDepartment">Nowy oddzia&#322;</a>
+					</li>
+					<li>
+						<a href="#/departmentsList">Lista odzia&#322;&#243;w</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div id="page-wrapper">
+			<div class="container-fluid" ng-view></div>
 		</div>
 	</div>
 </body>
@@ -35,9 +42,20 @@
 <script type="text/javascript" src="app/js/angular-resource.min.js"></script>
 <script type="text/javascript" src="app/app.js"></script>
 <script type="text/javascript" src="app/app.route.js"></script>
-<script type="text/javascript" src="app/components/newPackage/newPackageController.js"></script>
-<script type="text/javascript" src="app/components/packagesList/packagesListController.js"></script>
-<script type="text/javascript" src="app/components/newDepartment/newDepartmentController.js"></script>
-<script type="text/javascript" src="app/components/departmentsList/departmentsListController.js"></script>
-<script type="text/javascript" src="app/components/historyPackage/historyPackageController.js"></script>
+<script type="text/javascript"
+	src="app/components/newPackage/newPackageController.js"
+></script>
+<script type="text/javascript"
+	src="app/components/packagesList/packagesListController.js"
+></script>
+<script type="text/javascript"
+	src="app/components/newDepartment/newDepartmentController.js"
+></script>
+<script type="text/javascript"
+	src="app/components/departmentsList/departmentsListController.js"
+></script>
+<script type="text/javascript"
+	src="app/components/historyPackage/historyPackageController.js"
+></script>
+<script src="app/js/bootstrap.min.js"></script>
 </html>
