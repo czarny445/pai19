@@ -22,5 +22,13 @@ public class CheckpointController {
         hr.save(h);
         return "{\"succes\" :\"true\"}";
     }
+    
+    @RequestMapping("/checkpointload")
+    public @ResponseBody History checkpointload() {
+        History history = new History();
+        history.setDate(Date.from(Instant.now()));
+        history.setPack("1234567890");
+        return history;
+    }
 
 }
