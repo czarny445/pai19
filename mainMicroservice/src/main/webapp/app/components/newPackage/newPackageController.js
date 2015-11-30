@@ -2,18 +2,21 @@ angular
 	.module("clientBrowser")
 	.controller("NewPackageController", newPackageController);
 
-function newPackageController($scope, $http){
+function newPackageController($rootScope, $http){
 	var ctrl = this;
 	ctrl.newPackage = {};
 	ctrl.create = function() {
 		$http.post("http://localhost:8080/package/create", ctrl.newPackage).success(function(data){
 			if(data == ""){
-				console.log("cos poszlo nie tak");
+				$rootScope.showAlert("danger", "Błąd wywołania usługi");
 			}
 			else{
-				console.log("dodano paczke");
 				ctrl.newPackage = {};
+				$rootScope.showAlert("success", "Paczka została dodana");
 			}
+		})
+		.error(function(error){
+			$rootScope.showAlert("danger", "Błąd wywołania usługi");
 		});
 	};
 }

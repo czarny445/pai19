@@ -7,6 +7,9 @@ function departmentsListController($scope, $http){
 	
 	$http.get("http://localhost:8080/department/getAllDepartments").success(function(data){
 		ctrl.departments = data;
+	})
+	.error(function(error){
+		$rootScope.showAlert("danger", "Błąd wywołania usługi");
 	});
 	
 
