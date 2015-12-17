@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AsyncT asyncT = new AsyncT();
+                String text = txt.getText().toString();
+                asyncT.setTextParameter(text);
                 asyncT.execute();
             }
         });
@@ -52,16 +54,25 @@ public class MainActivity extends AppCompatActivity {
 
     /* Klasa do odpowiedzi*/
     class AsyncT extends AsyncTask<Void, Void, Void> {
+
+        String text = "";
+
+        public void setTextParameter(String text)
+        {
+            this.text = text;
+        }
+
         @Override
         protected Void doInBackground(Void... voids) {
             HttpClient httpclient = new DefaultHttpClient();
+            //TODO: Naprawa błędu połączenia
             HttpPost httppost = new HttpPost("http://localhost:8081/checkpoint");
 
             try {
 
                 JSONObject jsonobj = new JSONObject();
 
-                jsonobj.put("pack", "1234567890");
+                jsonobj.put("pack", text);
 
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("req", jsonobj.toString()));
